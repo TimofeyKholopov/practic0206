@@ -1,0 +1,18 @@
+﻿  DayProgram.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\algorithm(7460,45): error C2676: бинарный "-": "const std::_List_unchecked_iterator<std::_List_val<std::_List_simple_types<_Ty>>>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
+          with
+          [
+              _Ty=tvProgram *
+          ]
+C:\Users\clesh\source\repos\Project9\Project9\DayProgram.cpp(165): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::sort<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>,bool(__cdecl *)(const tvProgram *,const tvProgram *)>(const _RanIt,const _RanIt,_Pr)"
+          with
+          [
+              _Ty=tvProgram *,
+              _RanIt=std::_List_iterator<std::_List_val<std::_List_simple_types<tvProgram *>>>,
+              _Pr=bool (__cdecl *)(const tvProgram *,const tvProgram *)
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\algorithm(7460,5): error C2672: "_Sort_unchecked": не найдена соответствующая перегруженная функция
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\algorithm(7460,1): error C2780: void std::_Sort_unchecked(_RanIt,_RanIt,iterator_traits<_Iter>::difference_type,_Pr): требует аргументов: 4, имеется: 3
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\algorithm(7426): message : см. объявление "std::_Sort_unchecked"
+  main.cpp
+  Создание кода...
