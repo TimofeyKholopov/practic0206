@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <list>
+#include <vector>
 #include <algorithm>
 #include <string>
 #include "Time_.h"
@@ -9,13 +9,14 @@
 #include "Education.h"
 #include "Movie.h"
 #include "Show.h"
+#include <fstream>
 using namespace std;
 
 bool mycompare(const tvProgram* lhs, const tvProgram* rhs);
 
 class DayProgram
 {
-	list<tvProgram*> programs;
+	vector<tvProgram*> programs;
 	string date;
 public:
 	DayProgram();
@@ -29,5 +30,10 @@ public:
 	void add();
 
 	void findby();
+
 	void mysort();
+
+	void save(ofstream& file);
+
+	void load(ifstream& file);
 };

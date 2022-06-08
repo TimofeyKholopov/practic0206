@@ -20,7 +20,7 @@ string DayProgram::getDate() const&
 
 void DayProgram::show()
 {
-	list<tvProgram*>::iterator it;
+	vector<tvProgram*>::iterator it;
 	for (it = programs.begin(); it != programs.end(); it++)
 	{
 		cout << (*it)->toString();
@@ -49,6 +49,20 @@ void DayProgram::add()
 		cin >> h;
 		cout << "Write minutes" << endl;
 		cin >> m;
+		try
+		{
+		vector<tvProgram*>::iterator it;
+		for (it = programs.begin(); it != programs.end(); it++)
+			{
+			if ((*it)->getTime() == Time_(h, m, 0))
+				throw;
+			}
+		}
+		catch (string temp)
+		{
+			temp = "The show is already booked for this time";
+			cout << temp << endl;
+		}
 		programs.push_back(new Education(t1, t2, Time_(h, m, 0)));
 		break;
 	}
@@ -68,6 +82,20 @@ void DayProgram::add()
 		cin >> m;
 		cout << "Write year" << endl;
 		cin >> y;
+		try
+		{
+			vector<tvProgram*>::iterator it;
+			for (it = programs.begin(); it != programs.end(); it++)
+			{
+				if ((*it)->getTime() == Time_(h, m, 0))
+					throw;
+			}
+		}
+		catch (string temp)
+		{
+			temp = "The show is already booked for this time";
+			cout << temp << endl;
+		}
 		programs.push_back(new Movie(t1, y, t2, Time_(h,m,0)));
 		break;
 	}
@@ -85,6 +113,20 @@ void DayProgram::add()
 		cin >> h;
 		cout << "Write minutes" << endl;
 		cin >> m;
+		try
+		{
+			vector<tvProgram*>::iterator it;
+			for (it = programs.begin(); it != programs.end(); it++)
+			{
+				if ((*it)->getTime() == Time_(h, m, 0))
+					throw;
+			}
+		}
+		catch (string temp)
+		{
+			temp = "The show is already booked for this time";
+			cout << temp << endl;
+		}
 		programs.push_back(new Show(t1, t2, Time_(h, m, 0)));
 		break;
 	}
@@ -103,6 +145,20 @@ void DayProgram::add()
 		cin >> h;
 		cout << "Write minutes" << endl;
 		cin >> m;
+		try
+		{
+			vector<tvProgram*>::iterator it;
+			for (it = programs.begin(); it != programs.end(); it++)
+			{
+				if ((*it)->getTime() == Time_(h, m, 0))
+					throw;
+			}
+		}
+		catch (string temp)
+		{
+			temp = "The show is already booked for this time";
+			cout << temp << endl;
+		}
 		programs.push_back(new Children(mina, maxa,t2, Time_(h, m, 0)));
 		break;
 	}
@@ -117,7 +173,7 @@ void DayProgram::findby()
 	{
 	case 1:
 	{
-		list<tvProgram*>::iterator it;
+		vector<tvProgram*>::iterator it;
 		string type;
 		cout << "Write type " << endl;
 		cin >> ws;
@@ -131,7 +187,7 @@ void DayProgram::findby()
 	}
 	case 2:
 	{
-		list<tvProgram*>::iterator it;
+		vector<tvProgram*>::iterator it;
 		string name;
 		cout << "Write name " << endl;
 		cin >> ws;
@@ -145,7 +201,7 @@ void DayProgram::findby()
 	}
 	case 3:
 	{
-		list<tvProgram*>::iterator it;
+		vector<tvProgram*>::iterator it;
 		int h, m;
 		cout << "Write hours" << endl;
 		cin >> h;
@@ -168,4 +224,37 @@ void DayProgram::mysort()
 bool mycompare(const tvProgram* lhs, const tvProgram* rhs)
 {
 	return lhs->getTime() < rhs->getTime();
+}
+
+void DayProgram::save(ofstream& file)
+{
+	if (file.is_open())
+	{
+	vector<tvProgram*>::iterator it;
+	bool temp = false;
+	for (it = programs.begin(); it != programs.end(); it++)
+	{
+		cout << (*it)->toString() << endl;
+		cout << "This ?" << endl;
+		cin >> temp;
+		if (temp)
+		{
+			file << (*it)->type() << endl;
+			file << (*it)->getTime() << endl;
+			file << (*it)->getName() << endl;
+			break;
+		}
+	}
+	}
+	
+}
+
+void DayProgram::load(ifstream& file)
+{
+	string name, temp;
+	int h, m;
+	getline(file, name);
+	file >> h;
+	file >> temp;
+	file >> m;
 }
